@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- docs(readme): rebranded the README to CypherClaw, added a rebrand transition note, and introduced a new highlights section covering unified operators, reusable components, large-artifact workflows, OTA resilience, and the browser lab experience.
 - Fixed app/task generation debugging by validating that `task.start` targets a real installed app, surfacing internal-heap diagnostics when task worker creation fails on constrained boards, and clearing stale task slots after startup failure.
 - Expanded app listings from 8 to 32 entries across the admin/API/runtime surfaces so installed apps no longer disappear from operator and model-visible listings once a workspace grows beyond a tiny demo set.
 - Tightened the execution-choice prompt guidance so concrete hardware requests with specific pins, counts, and timings no longer drift toward placeholder `hello`/`echo` apps.
