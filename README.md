@@ -1,4 +1,4 @@
-# ESPClaw
+# CypherClaw
 
 [![CI](https://github.com/atiti/espclaw/actions/workflows/ci.yml/badge.svg)](https://github.com/atiti/espclaw/actions/workflows/ci.yml)
 [![Release](https://github.com/atiti/espclaw/actions/workflows/release.yml/badge.svg)](https://github.com/atiti/espclaw/actions/workflows/release.yml)
@@ -8,8 +8,10 @@
 [![Boards](https://img.shields.io/badge/boards-ESP32%20%7C%20ESP32--S3-38bdf8.svg)](docs/support-matrix.md)
 
 > Bring the agent closer to the hardware.
+>
+> **Rebrand note:** the codebase, package names, and device/tool namespaces may still use `espclaw` while the product identity moves to **CypherClaw**.
 
-ESPClaw is an ESP32-native agent runtime for boards with real sensors, real I/O, and real constraints.
+CypherClaw is an ESP32-native agent runtime for boards with real sensors, real I/O, and real constraints.
 It combines:
 
 - an iterative LLM tool loop
@@ -20,16 +22,24 @@ It combines:
 
 The goal is simple: make an embedded board feel more like a programmable runtime at the hardware boundary than a fixed-function firmware image.
 
+## What's New In CypherClaw
+
+- **Unified operator surfaces**: UART, web admin, simulator, and Telegram now share the same slash-command + agent flow for more predictable operations.
+- **Reusable app architecture**: installable Lua components, app manifests, persisted behaviors, and local events are now first-class and model-accessible.
+- **Large artifact pipelines**: chunked blob upload plus file/blob/url installs make it practical to ship large Lua apps and markdown context on-device.
+- **Better OTA resilience**: rollback-aware OTA behavior and delayed confirmation improve recovery safety on constrained boards like `esp32cam`.
+- **Richer web experience**: the public site now includes a browser flasher and WebAssembly browser lab backed by the real runtime core.
+
 ## Flash It
 
 - Browser landing page, flasher, and WebAssembly browser lab: [espclaw.dev](https://espclaw.dev/)
 - Latest binaries: [GitHub Releases](https://github.com/atiti/espclaw/releases/latest)
 - Manual flashing and OTA notes: [docs/ota.md](docs/ota.md)
 
-## Why ESPClaw
+## Why CypherClaw
 
 Most LLM agents assume a server, a filesystem, and effectively unbounded memory.
-ESPClaw assumes:
+CypherClaw assumes:
 
 - a microcontroller
 - tight RAM budgets
@@ -126,7 +136,7 @@ Use events for:
 
 ## What Works Today
 
-ESPClaw is already usable for real local operator workflows.
+CypherClaw is already usable for real local operator workflows.
 
 Working areas:
 - admin UI served directly from the device
@@ -159,7 +169,7 @@ See:
 
 ## Operator Surfaces
 
-ESPClaw exposes one shared operator model across:
+CypherClaw exposes one shared operator model across:
 
 - admin web UI
 - UART console
@@ -246,7 +256,7 @@ For onboarding and runtime setup, see [docs/onboarding.md](docs/onboarding.md).
 
 ## Reusable Components
 
-ESPClaw has a first-class reusable component model.
+CypherClaw has a first-class reusable component model.
 
 A component can be:
 - installed from inline source
@@ -278,7 +288,7 @@ See:
 
 ## Large Artifacts And Context
 
-ESPClaw has chunk-aware flows for content that does not fit comfortably in one request buffer.
+CypherClaw has chunk-aware flows for content that does not fit comfortably in one request buffer.
 
 Supported patterns:
 - chunked blob upload into the workspace
@@ -298,7 +308,7 @@ See [docs/blob-transfer.md](docs/blob-transfer.md).
 
 ## Security And Privacy
 
-ESPClaw is a networked embedded system, not a toy shell script.
+CypherClaw is a networked embedded system, not a toy shell script.
 If you run it on hardware, treat it like software that can:
 
 - connect to cloud providers
@@ -369,7 +379,7 @@ Releases:
 
 ## Open Source Contract
 
-ESPClaw is MIT-licensed and intended to be hackable.
+CypherClaw is MIT-licensed and intended to be hackable.
 
 What that means in practice:
 - Lua apps and components are expected to be edited and shared
