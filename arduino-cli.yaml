@@ -1,0 +1,46 @@
+## arduino-cli project configuration
+##
+## Run from the sketch directory:
+##   arduino-cli compile --fqbn esp32:esp32:esp32s3 .
+##   arduino-cli compile --fqbn esp32:esp32:esp32   .
+##   arduino-cli upload  --fqbn esp32:esp32:esp32s3 --port /dev/ttyUSB0 .
+##   arduino-cli upload  --fqbn esp32:esp32:esp32s3 --port net:<ip>     .
+
+board_manager:
+  additional_urls:
+    - https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json
+
+library:
+  enable_unsafe_install: true
+
+sketch:
+  always_export_binaries: true
+
+## ── Quick-start ──────────────────────────────────────────────────────────────
+##
+## 1. Install board support (once):
+##      arduino-cli core install esp32:esp32
+##
+## 2. Install required libraries (once):
+##      arduino-cli lib install WiFiManager
+##      # ArduinoOTA and ESPmDNS are bundled with esp32:esp32 core
+##
+## 3. Compile:
+##      arduino-cli compile --fqbn esp32:esp32:esp32s3 .
+##      arduino-cli compile --fqbn esp32:esp32:esp32   .   # DevKitC V4
+##
+## 4. Flash via serial:
+##      arduino-cli upload --fqbn esp32:esp32:esp32s3 --port /dev/ttyUSB0 .
+##
+## 5. Flash via network OTA (after first serial flash):
+##      arduino-cli upload --fqbn esp32:esp32:esp32s3 --port net:192.168.1.x .
+##
+## ── First boot onboarding ────────────────────────────────────────────────────
+##
+## On first boot (no saved Wi-Fi credentials):
+##   1. Device broadcasts open AP: "ESPClaw-XXXXXX"
+##   2. Connect from phone/laptop, captive portal opens automatically
+##   3. Enter your Wi-Fi SSID + password → device reboots and connects
+##   4. Access admin UI at http://espclaw.local/ or http://<device-ip>/
+##
+## Subsequent boots use saved credentials automatically.

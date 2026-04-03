@@ -1,0 +1,32 @@
+## boards.local.txt — per-sketch arduino-cli / Arduino IDE build overrides
+##
+## Place this file in the sketch directory (alongside espclaw.ino).
+## arduino-cli picks it up automatically when compiling from this directory.
+##
+## Usage:
+##   arduino-cli compile --fqbn esp32:esp32:esp32s3 .
+##   arduino-cli compile --fqbn esp32:esp32:esp32   .
+
+# ── Custom partition table ────────────────────────────────────────────────────
+# Points to partitions_espclaw.csv in the sketch directory.
+# Two OTA slots (1.875 MB each) + 192 KB LittleFS workspace.
+esp32s3.build.partitions=partitions_espclaw
+esp32s3.upload.maximum_size=1966080
+
+esp32.build.partitions=partitions_espclaw
+esp32.upload.maximum_size=1966080
+
+# ── Extra build flags ─────────────────────────────────────────────────────────
+# ESP_PLATFORM is already defined by the Arduino ESP32 core, but we add
+# ARDUINO_ARCH_ESP32 explicitly so our #ifdef ARDUINO guards compile cleanly.
+esp32s3.build.extra_flags={build.extra_flags} -DARDUINO_ARCH_ESP32 -DCONFIG_MAIN_TASK_STACK_SIZE=10240 -DCONFIG_LWIP_MAX_SOCKETS=16
+
+esp32.build.extra_flags={build.extra_flags} -DARDUINO_ARCH_ESP32 -DCONFIG_MAIN_TASK_STACK_SIZE=10240 -DCONFIG_LWIP_MAX_SOCKETS=16
+
+# ── Include path for espclaw headers ─────────────────────────────────────────
+# Lets source files use #include "espclaw/foo.h" from any depth.
+esp32s3.compiler.c.extra_flags=-I{build.source.path}/include
+esp32s3.compiler.cpp.extra_flags=-I{build.source.path}/include
+
+esp32.compiler.c.extra_flags=-I{build.source.path}/include
+esp32.compiler.cpp.extra_flags=-I{build.source.path}/include
